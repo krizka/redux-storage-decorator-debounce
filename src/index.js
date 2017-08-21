@@ -22,6 +22,7 @@ export default (engine, ms, maxWait = null, eventsToPersistOn = ['beforeunload']
 
             lastTimeout = clearTimeout(lastTimeout);
             maxTimeout = clearTimeout(maxTimeout);
+            maxTimeout = null;
             lastReject = null;
             engine.save(lastState);
         };
@@ -44,6 +45,7 @@ export default (engine, ms, maxWait = null, eventsToPersistOn = ['beforeunload']
                 const doSave = () => {
                     lastTimeout = clearTimeout(lastTimeout);
                     maxTimeout = clearTimeout(maxTimeout);
+                    maxTimeout = null;
                     lastReject = null;
                     lastState = null;
                     engine.save(state).then(resolve).catch(reject);
